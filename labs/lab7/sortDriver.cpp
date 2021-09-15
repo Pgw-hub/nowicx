@@ -1,3 +1,7 @@
+//아너코드: On my honor, I pledge that I have neither received nor provided improper assistance in the completion of this assignment.
+//Signed: [박건우]
+//Student Number: [21901023]
+
 // C++ for C Coders & Data Structures
 // Lecture note by idebtor@gmail.com
 //

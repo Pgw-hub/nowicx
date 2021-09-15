@@ -1,0 +1,26 @@
+#아너코드: On my honor, I pledge that I have neither received nor provided improper assistance in the completion of this assignment.
+#Signed: [박건우]
+#Student Number: [21901023]
+
+CC = g++
+LIBDIR = ../../lib
+INCDIR = ../../include
+CCFLAGS = -Wall -std=c++11 -g
+LDFLAGS = -L$(LIBDIR)
+
+SRCS = comparator.cpp printlist.cpp bubble.cpp quick.cpp
+OBJS = $(SRCS:.cpp=.o)
+ARCH = libsort.a
+
+$(ARCH): $(OBJS)
+	ar cru $@ $+
+	ranlib $@
+%.o: %.cpp
+	$(CC) -c $(CCFLAGS) $<
+
+.PHONY: all install clean
+all: $(ARCH)
+clean:
+	rm -f $(OBJS)
+install:
+	cp -v $(ARCH) ../../nowic/lib

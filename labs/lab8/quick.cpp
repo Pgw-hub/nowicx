@@ -81,7 +81,7 @@ void quicksort(int *a, int n, bool (*comp)(int,int)) {
 
 
 
-#if 1
+#if 0
 
 bool more(int x, int y) { return x > y; }   // for descending order
 bool less(int x, int y) { return x < y; }  
