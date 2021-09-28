@@ -19,7 +19,7 @@ else
 	LDFLAGS = -L$(LIBDIR) -lnowic_mac 
 endif
 
-SRC1 = binsearch.cpp 
+SRC1 = binsearch.cpp
 OBJ1 = $(SRC1:.cpp=.o)
 EXE1 = binsearch
 

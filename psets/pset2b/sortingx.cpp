@@ -1,6 +1,3 @@
-//아너코드: On my honor, I pledge that I have neither received nor provided improper assistance in the completion of this assignment.
-//Signed: [박건우]
-//Student Number: [21901023]
 //	
 //	Lecture Note by idebtor@gmail.com
 //	
@@ -43,10 +40,11 @@ using namespace std;
 // random number out of from 0 to N - 1.
 // Hint: Refer to rand() and srand() function document, random.pdf provided.
 void randomize_bruteforce(int list[], int n) {
+
 	for (int i = 0; i < n; i++){
         int a = rand()%n;
         swap(list[i],list[a]);
-    }
+    }		
 }
 
 void show_timeit(int begin) { 	// display elapsed time
@@ -82,6 +80,9 @@ int main(int argc, char *argv[]) {
 	map<bool(*)(int,int),string> comp_map; 		// define comp_map
 	// Insert(or populate) 'comp_map' with two keys and values pairs. 
 	comp_map[comp_fp]="Ascending";
+	//여기에다가 선언을 해줘야함. 
+
+
     // for "Ascending" and for "Descending"
 	// Define a STL map variable 'sort_map' to associate <key_type, value_type> pair,  
 	// where key_type is sort fp and value_type is a description of the sort name.
@@ -181,6 +182,8 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 	} while (choice != 'q');
+
+	cout << "your code here\n";
 
 	cout << "\tHappy Coding~~";
 	return EXIT_SUCCESS;

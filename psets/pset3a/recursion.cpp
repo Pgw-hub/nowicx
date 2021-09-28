@@ -1,4 +1,8 @@
-﻿/* 
+﻿//아너코드: On my honor, I pledge that I have neither received nor provided improper assistance in the completion of this assignment.
+//Signed: [박건우]
+//Student Number: [21901023]
+
+/* 
  * Lecture Notes on Recursion by Youngsup Kim
  * Recursive algorithm is expressed in terms of 
  * 1. base case(s) for which the solution can be stated non‐recursively,
@@ -22,9 +26,10 @@
  * end factorial
  */
 
-long long unsigned factorial(int n) {
-	std::cout << "your code here\n";
-	return 1;
+long long unsigned factorial(int n) {//완료
+	if(n==0 || n==1) return n;
+    auto result = n * factorial(n-1);
+    return result;
 }
 
 /*
@@ -34,7 +39,8 @@ long long unsigned factorial(int n) {
  *		gcd⁡(x, y) = gcd⁡(y, x % y)    if y !=0
  *		          = gcd⁡(x, 0) = x    if y = 0
  */
-int gcd(int x, int y) {
+
+int gcd(int x, int y) {//완료
 	if (y == 0) return x;
 	return gcd(y, x % y);
 }
@@ -49,7 +55,7 @@ int gcd(int x, int y) {
  * 0, 1, 2, 2, 3, 5, 8, 13, 21, 34, ....
  */
 
-long long unsigned fibonacci(int n) {
+long long unsigned fibonacci(int n) {//완료
 	if (n == 0 || n == 1) return n;
 	return fibonacci(n - 1) + fibonacci(n - 2);
 }
@@ -66,7 +72,7 @@ long long unsigned fibonacci(int n) {
  *	bunnyEars(3) = 6
  *	bunnyEars(234) = 468 
  */
-int bunnyEars(int bunnies) {
+int bunnyEars(int bunnies) {//완료
 	if (bunnies == 0) return 0;
 
 	// Recursive case: otherwise, make a recursive call with bunnies-1
@@ -92,8 +98,9 @@ int bunnyEars(int bunnies) {
  *
  */
 int funnyEars(int funnies) {
-	std::cout << "your code here\n";
-	return 2;
+	if(funnies == 0) return 0;
+	else if(funnies%2==0) return 3+funnyEars(funnies - 1 );
+	else return 2+funnyEars(funnies - 1);
 }
 
 /* 
@@ -113,8 +120,8 @@ int funnyEars(int funnies) {
  */
 
 int triangle(int rows) {
-	std::cout << "your code here\n";
-	return rows;
+	if(rows == 0) return 0;
+	return rows + triangle( rows - 1 );
 }
 
 
@@ -130,8 +137,8 @@ int triangle(int rows) {
  * sumDigits(235) = 10
  */
 int sumDigits(int n) {
-	std::cout << "your code here\n";
-	return n;
+	if( n <= 10) return n;
+	else return sumDigits(n/10)+n%10;
 }
 
 /* 
@@ -152,8 +159,9 @@ int sumDigits(int n) {
  */
 
 int count8(int n) {
-	std::cout << "your code here\n";
-	return n;
+	if( n == 0) return 0;
+	else if(n%10 == 8) return 1 + count8(n/10);
+    else return count8(n/10);
 }
 
 /* 
@@ -169,8 +177,7 @@ int count8(int n) {
  */
 
 long long unsigned powerN(int base, int n) {
-	std::cout << "your code here\n";
-	return n;
+	//base
+	if( n == 0) return 1;
+	else return base * powerN(base,n-1);
 }
-
-
