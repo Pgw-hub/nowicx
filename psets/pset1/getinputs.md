@@ -63,7 +63,7 @@ int main() {
 
   stringstream ss(line);   // stringstream object ss
   string word;
-  while(getline(ss, word, ' '))  // Tokenize w.r.t. space ' '
+  while(getline(ss, word, ' '))  //Tokenize w.r.t. space ' '
       tokens.push_back(word);
 
   for(int i = 0; i < tokens.size(); i++) // print the tokens
