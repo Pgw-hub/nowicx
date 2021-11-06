@@ -41,7 +41,7 @@ void minmax(pNode p, int& min, int& max);
 
 // pushes a new node with val at the beginning of the list or
 // onto the top of the stack  and returns the new first node.
-pNode push(pNode p, int x, int N = 1);
+pNode push(pNode p, int x, int N = 1);//n은 optional
 
 // removes N nodes in the list and returns the new first node.
 // This deallocates the removed node, effectively reduces its size by N.
@@ -52,5 +52,5 @@ pNode top(pNode p);
 
 // shows all the list elements, show_n items per line  if all is true.
 // shows the first and the last show_n items in the list if all is false.
-void show(pNode p, bool all = true, int show_n = 10);
+void show(pNode p, bool all = true, int show_n = 10);//선택적인자가 여기 있음.
 #endif

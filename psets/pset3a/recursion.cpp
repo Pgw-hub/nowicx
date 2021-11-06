@@ -134,11 +134,11 @@ int triangle(int rows) {
  * sumDigits(1) = 1
  * sumDigits(0) = 0
  * sumDigits(10110) = 3
- * sumDigits(235) = 10
+ * sumDigits(235) = 100
  */
 int sumDigits(int n) {
-	if( n <= 10) return n;
-	else return sumDigits(n/10)+n%10;
+	if( n < 10) return n;
+	else return (n%10) + sumDigits(n/10);
 }
 
 /* 
