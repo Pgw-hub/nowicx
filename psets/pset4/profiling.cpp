@@ -62,7 +62,7 @@ int getStep(int n) {
 	return step;
 }
 
-void profiling(void (*sort_fp)(int*, int, bool (*comp)(int, int)), int* list, const int n, //파라미터로 펑션포인터를 갖는 펑션포인터.
+void profiling(void (*sort_fp)(int*, int, bool (*comp)(int, int)), int* list, const int n, 
                bool (*comp_fp)(int, int)) {
 	
 	int *saved = new (nothrow) int[n];		// to save the original list into a buffer
@@ -122,7 +122,7 @@ int main(int argc, char *argv[]) {
 	assert(list != nullptr);
 
 	///////////// rewrite this part for DRY and MNN ////////////////////////
-/*
+
 	cout << "\n\tinsertionsort(): sorted" << endl;
 	for (int i = 0; i < N; i++) list[i] = i;   			// sorted data ready
 	profiling(insertionsort, list, N, ::less);  		
@@ -149,7 +149,7 @@ int main(int argc, char *argv[]) {
 	j = N - 1;
 	for (int i = 0; i < N; i++) list[i] = j--;			// reversed sequence
 	profiling(mergesort, list, N, ::less);   	
-*/
+
 	cout << "\n\tquicksort(): sorted" << endl;
 	for (int i = 0; i < N; i++) list[i] = i;   			// sorted data ready
 	profiling(quicksort, list, N, ::less);              
@@ -159,7 +159,7 @@ int main(int argc, char *argv[]) {
 	profiling(quicksort, list, N, ::less);              // randomized 
 
 	cout << "\n\tquicksort(): reversed" << endl;
-	int j = N - 1;
+	j = N - 1;
 	for (int i = 0; i < N; i++) list[i] = j--;			// reversed sequence
 	profiling(quicksort, list, N, ::less);   
 

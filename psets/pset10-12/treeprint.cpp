@@ -1,4 +1,5 @@
 
+
 /** File: treeprint.cpp
  * implements printing a binary tree on console graphically. 
  *
@@ -280,6 +281,17 @@ void treeprint_levelorder(tree root, int level) {
 	}
 	DPRINT(cout << "<treeprint_levelorder lv=" << level << endl;);
 }
+void Treeprint_levelorder(tree root, int level,vector<int>& v) {
+    DPRINT(cout << ">treeprint_levelorder lv=" << level << endl;);
+    if (root == nullptr) return;
+    if (level == 1)
+        v.push_back(root->key);
+    else {
+        Treeprint_levelorder(root->left, level - 1,v);
+        Treeprint_levelorder(root->right, level - 1,v);
+    }
+    DPRINT(cout << "<treeprint_levelorder lv=" << level << endl;);
+}
 
 void treeprint_levelorder(tree root) {
 	DPRINT(cout << ">treeprint_levelorder";);
@@ -294,6 +306,7 @@ void treeprint_levelorder(tree root) {
 	DPRINT(cout << "<treeprint_levelorder \n";);
 }
 
+
 // print the first and the last three levels only
 void treeprint_levelorder_tasty(tree root) {
 	DPRINT(cout << ">treeprint_levelorder_tasty";);
@@ -302,14 +315,18 @@ void treeprint_levelorder_tasty(tree root) {
 
 	// height is less 7, just use levelorder()
 	if (h < 7) return treeprint_levelorder(root);
-
+    
 	for (int i = 1; i <= 3; i++) {
-		treeprint_levelorder(root, i);
+        vector<int> v;
+		Treeprint_levelorder(root, i,v);
+        show_vector(v,20);
 		cout << endl;
 	}
 	cout << "...left out...\n";
 	for (int i = h - 2; i <= h; i++) {
-		treeprint_levelorder(root, i);
+        vector<int> v;
+		Treeprint_levelorder(root, i,v);
+        show_vector(v,20);
 		cout << endl;
 	}
 	DPRINT(cout << "<treeprint_levelorder_tasty \n";);

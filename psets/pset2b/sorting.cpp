@@ -1,6 +1,3 @@
-//아너코드: On my honor, I pledge that I have neither received nor provided improper assistance in the completion of this assignment.
-//Signed: [박건우]
-//Student Number: [21901023]
 //	
 //	Lecture Note by idebtor@gmail.com
 //	
@@ -43,10 +40,10 @@ using namespace std;
 // random number out of from 0 to N - 1.
 // Hint: Refer to rand() and srand() function document, random.pdf provided.
 void randomize_bruteforce(int list[], int n) {
-	for (int i = 0; i < n; i++){
-        int a = rand()%n;
-        swap(list[i],list[a]);
-    }
+
+	cout << "your code here - rewrite the following code\n";
+	for (int i = 0; i < n; i++) 
+		list[i] = rand() % n;
 }
 
 void show_timeit(int begin) { 	// display elapsed time
@@ -60,46 +57,49 @@ int main(int argc, char *argv[]) {
 	clock_t begin;
 	int show_n = 20;					// the total number of samples to show
 	int per_line = 10;					// the number of samples per line to show
+
 	int N = 50;							// a magic number - initial number of samples
 	int *list = new (nothrow) int[N];   // create a list 
 	assert(list != nullptr);
 	for (int i = 0; i < N; i++) list[i] = i;
+
 	// Declare a comparator function pointer 'comp_fp' variable and initialize 
 	// it with an ascending order comparator function, '::less'.
-	bool (*comp_fp)(int,int) = ::less;      	// declare comp_fp 
+	cout << "your code here\n";        	// declare comp_fp 
+
 	// Declare a sort function pointer variable 'sort_fp' and initialize it 
-	// with a sort function, 'bubblesort':
-    void (*sort_fp)(int*,int,bool(*)(int,int)) = bubblesort;// declare sort_fp
-    //그니까 sort_fp가 bubblesort라는 함수를 가리키고 있는 함수포인터이고, 이 함수포인터는 아래에 sort_map의 key에 들어갈 수 있댜.
+	// with a sort function, 'bubblesort': 
+	cout << "your code here\n";   		// declare sort_fp
+
 	///////////////////////////////////////////////////////////////////////////////
 	// Two STL maps are used for showing the current status of user's selections.
 	// comp_map[xxx_fp] contains one of sorting-orders, "Ascending" or "Descending".
 	// sort_map[xxx_fp] contains one of sorting algorithms. 
 	///////////////////////////////////////////////////////////////////////////////
+	
 	// Define a STL map variable 'comp_map' to associate the comparator 
 	// function pointer with a description such as "Ascending" and "Descending", 
 	// respectively.
-	map<bool(*)(int,int),string> comp_map; 		// define comp_map
+	cout << "your code here\n"; 		// define comp_map
+
 	// Insert(or populate) 'comp_map' with two keys and values pairs. 
-	comp_map[comp_fp]="Ascending";
-    // for "Ascending" and for "Descending"
+	cout << "your code here\n";  		// for "Ascending" and for "Descending"
+
 	// Define a STL map variable 'sort_map' to associate <key_type, value_type> pair,  
 	// where key_type is sort fp and value_type is a description of the sort name.
-	map<void(*)(int*,int,bool(*)(int,int)),string> sort_map;
-    		// define sort_map
+	cout << "your code here\n"; 		// define sort_map
+
 	// Insert (or populate) 'sort_map' with key and value pairs. 
 	// For example, sort_map[bubblesort] = "Bubble";
-	sort_map[sort_fp] = "Bubble"; //이건 함수포인터가 앞에 있는 케이스이다. 어떻게 접근? key로 value접근
+	cout << "your code here\n";
 	///////////////////////////////////////////////////////////////////////////////
-    //map에서 함수포인터 접근
+
 	setvbuf(stdout, NULL, _IONBF, 0);  	// prevent output from buffered on console
 
 	do {
-        if(comp_fp == more) comp_map[comp_fp] = "Desending";//o를 실행했을때 출력값을 바꿔줘야하기 때문에.
-
-		printlist(list, N, show_n, per_line);//일단 냅다 출력부터한다.
+		printlist(list, N, show_n, per_line);
 		stringstream ss;
-		ss << "\tMENU[ sort=" << sort_map[sort_fp] << " order=" << comp_map[comp_fp];
+		ss << "\tMENU[ sort=" << "Your code here" << " order=" << "Your code here";
 		ss << " N=" << N << " show_n=" << show_n << " per_line=" << per_line << " ]";
 		cout << ss.str() << endl;
 		cout << "\tB - Bubblesort\t" 		<< "\tn - set N samples and initialize\n"; 
@@ -109,47 +109,39 @@ int main(int argc, char *argv[]) {
 		cout << "\tS - Selectionsort"		<< "\to - order[Ascending/Descending]\n";	
 		cout << "\t\t\t"					<< "\ts - sort()\n";
 		choice = GetChar("\tCommand(q to quit): ");
-        
+
 		switch (choice) {
-		case 'B'://완료
-            sort_fp = bubblesort;
-            sort_map[sort_fp] = "Bubble";
+		case 'B':
+			cout << "B: your code here\n";
 			break;
-		case 'I'://완료
-            sort_fp = insertionsort;
-			sort_map[sort_fp] = "Insertion";
+		case 'I':
+			cout << "I: your code here\n";
 			break;
-		case 'M'://완료
-            sort_fp = mergesort;
-			sort_map[sort_fp] = "Merge";
+		case 'M':
+			cout << "M: your code here\n";
 			break;
-		case 'Q'://완료
-            sort_fp = quicksort;
-			sort_map[sort_fp] = "Quick";
+		case 'Q':
+			cout << "Q: your code here\n";
 			break;
-		case 'S'://완료
-            sort_fp = selectionsort;
-			sort_map[sort_fp] = "Selection";
+		case 'S':
+			cout << "S: your code here\n";
 			break;
 
-		case 'n': //
+		case 'n': 
 			keyin = GetInt("\tEnter sample size N: ");
 			if (keyin <= 1) {
 				cout << "\tExpecting a number greater than 1\n";
 				break;
 			}
-            else{
-                N = keyin;
-                assert(list != nullptr);
-                delete[] list;
-                list = nullptr;
-	            list = new (nothrow) int[N];   // create a list 
-	            assert(list != nullptr);
-	            for (int i = 0; i < N; i++) list[i] = i;
-            }
+
+			// set N with the new keyin value
+			// before allocating the new list, free the old list if not NULL
+			// allocate memory for new data samples
+			// Fill the list with numbers from 0 to n - 1.
+			cout << "n: your code here\n";
 			break;
 
-		case 'r': //완료
+		case 'r': 
 			#if 1
 			randomize_bruteforce(list, N);
 			#else
@@ -157,23 +149,24 @@ int main(int argc, char *argv[]) {
 			#endif
 			break;
 
-		case 'm'://완료
-			show_n = GetInt("\tEnter max samples to show: ");
+		case 'm': 
+			keyin = GetInt("\tEnter max samples to show: ");
+			cout << "m: your code here\n";
 			break;
 
-		case 'l'://완료
-			per_line = GetInt("\tEnter max samples per line: ");
+		case 'l': 
+			keyin = GetInt("\tEnter max samples per line: ");
+			cout << "p: your code here\n";
 			break;
 		
-		case 'o'://완료 
-            // use comp_fp, ::less, more and a ternary operator 
-			// one-line code, use 
-            comp_fp = (comp_fp == ::less) ? more : ::less;
+		case 'o': // use comp_fp, ::less, more and a ternary operator 
+			cout << "o: your code here\n";		// one-line code, use 
 			break;
 
-		case 's'://완료
-			begin = clock();// one-line code, use sort_fp, comp_fp
-			sort_fp(list,N,comp_fp);
+		case 's': 
+			begin = clock();
+			cout << "s: your code here\n";  	// one-line code, use sort_fp, comp_fp
+			bubblesort(list, N);                // remove this line
 			show_timeit(begin); 
 			break;
 
@@ -181,6 +174,8 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 	} while (choice != 'q');
+
+	cout << "your code here\n";
 
 	cout << "\tHappy Coding~~";
 	return EXIT_SUCCESS;

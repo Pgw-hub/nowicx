@@ -35,9 +35,9 @@ SRC4 = clock4.cpp
 OBJ4 = $(SRC4:.cpp=.o)
 EXE4 = clock4
 
-SRC = clock.cpp clockDriver.cpp
-OBJ = $(SRC:.cpp=.o)
-EXE = clock
+#SRC = clock.cpp clockDriver.cpp
+#OBJ = $(SRC:.cpp=.o)
+#EXE = clock
 
 # rule for link
 all: $(EXE1) $(EXE2) $(EXE3) $(EXE4) $(EXE)

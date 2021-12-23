@@ -9,18 +9,18 @@
 using namespace std;
 
 int randint(int min, int max) {
-	return std::rand() % (max + 1 - min) + min;
+	return std::rand() % (max +$(OTHER_LDFLAGS) -ObjC 1 - min) + min;
 }
 
 void show_timeit(int begin) { 	// display elapsed time
-    cout << "\tcpu: " << ((double)clock() - begin) / CLOCKS_PER_SEC << " sec\n";
+	cout << "\tcpu: " << ((double)clock() - begin) / CLOCKS_PER_SEC << " sec\n";
 }
 
 int main() {
 	char c;
 	int val, N = 0;
-    clock_t begin = 0;
-	Node* stack = nullptr;//node타입의 stack을 선언.
+	clock_t begin = 0;
+	Node* stack = nullptr;
 	int min = 0, max = 0;
 	bool show_all = true;	// toggle the way of showing values
 	int show_n = 10;		// the number of items to show per line
@@ -40,17 +40,13 @@ int main() {
 			cout << "\ts - show [ALL] items\t";
 		cout << "n - n items per line\n";
 		cout << "\tc - clear  O(n)\n";
-        
-        cout <<"\tCommand[q to quit]: ";
-        cin >> c;
-		//c = GetChar("\tCommand[q to quit]: ");
+
+		c = GetChar("\tCommand[q to quit]: ");
 		// execute the command
 		switch (c) {
 		case 'p':
-                cout <<"\tEnter a number to push: ";
-                cin >> val;
-			//val = GetInt("\tEnter a number to push: ");
-			stack = push(stack, val);//head가 stack에 담겨있음. 
+			val = GetInt("\tEnter a number to push: ");
+			stack = push(stack, val);
 			break;
 
 		case 'o':  // pops(deletes) the top of the stack
@@ -65,12 +61,10 @@ int main() {
 
 		case 'm': // find min, max in stack
 			if (empty(stack)) break;
-			
 			begin = clock();
 			minmax(stack, min, max);
 			begin = clock();
 			cout << "\tMin: " << min << "\t Max: " << max << endl;
-			
 			break;
 
 		case 's': // toggle the way of showing
@@ -78,9 +72,7 @@ int main() {
 			break;
 
 		case 'n':
-                cout <<"\tn items per line to show: ";
-                cin >> val;
-			//val = GetInt("\tn items per line to show: ");
+			val = GetInt("\tn items per line to show: ");
 			if (val >= 1) show_n = val;
 			break;
 
@@ -90,12 +82,8 @@ int main() {
 			break;
 
 		case 'P':
-                cout <<"\tEnter number of nodes to push: ";
-                cin >> N;
-                cout <<"\tEnter a number to begin with: ";
-                cin >> val;
-			//N = GetInt("\tEnter number of nodes to push: ");
-			//val = GetInt("\tEnter a number to begin with: ");
+			N = GetInt("\tEnter number of nodes to push: ");
+			val = GetInt("\tEnter a number to begin with: ");
 			begin = clock();
 			stack = push(stack, val, N);
 			show_timeit(begin);
@@ -103,9 +91,7 @@ int main() {
 
 		case 'O':
 			if (empty(stack)) break;
-                cout <<"\tEnter number of nodes to pop: ";
-                cin >> N;
-			//N = GetInt("\tEnter number of nodes to pop: ");
+			N = GetInt("\tEnter number of nodes to pop: ");
 			begin = clock();
 			stack = pop(stack, N);
 			show_timeit(begin);

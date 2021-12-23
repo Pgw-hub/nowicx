@@ -1,0 +1,50 @@
+# Graph file format example:
+# To represent a graph: 
+# The number of vertex in the graph comes at the first line.
+# The number of edges comes In the following line, 
+# Then list a pair of vertices connected each other in each line.
+# The order of a pair of vertices should not be a matter.
+# Blank lines and the lines which begins with # or ; are ignored. 
+#
+# The lines that begins with . will be read into graph data structure
+# and displayed on request.
+#
+# For example: 
+.  [0] -------[1]------[2]------[3]
+.   |           \       |       /  
+.   |             \     |     / 
+.  [5]              \   |   /  
+.   |                 \ | /            
+.   |                  [6]
+.   |                   |
+.  [4]                 [7]
+# <my result>
+#  
+#            vertex[0..7] =    0   1   2   3   4   5   6   7
+#              DFS0[0..7] =    0   5   4   1   6   7   3   2
+#        DFS parent[0..7] =   -1   0   3   6   5   0   1   6
+#              BFS0[0..7] =    0   5   1   4   6   2   7   3
+#            DistTo[0..7] =    0   1   2   3   2   1   2   3
+#        BFS parent[0..7] =   -1   0   1   6   5   0   1   6
+# <graphx result>
+#  
+#            vertex[0..7] =    0   1   2   3   4   5   6   7
+#              DFS0[0..7] =    0   5   4   1   6   7   3   2
+#        DFS parent[0..7] =   -1   0   3   6   5   0   1   6
+#              BFS0[0..7] =    0   5   1   4   6   2   7   3
+#            DistTo[0..7] =    0   1   2   3   2   1   2   3
+#        BFS parent[0..7] =   -1   0   1   6   5   0   1   6
+8
+9
+0 5
+0 1
+1 2
+3 6
+5 4
+2 6
+2 3
+1 6
+6 7
+
+
+

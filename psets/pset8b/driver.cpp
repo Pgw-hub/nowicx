@@ -9,9 +9,9 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+
 #include "nowic.h"
 #include "listnode.h"
-
 using namespace std;
 
 void show_timeit(int begin) { 	// display elapsed time
@@ -25,7 +25,7 @@ int main() {
 	Node *head = nullptr;
 	bool show_all = false;        // toggle the way of showing values 
 	string show_menu[] = { "HEAD/TAIL", "ALL" };
-	int show_n = 12;              // n items shown per line
+	int show_n = 12;              // n items shown per line  
 	
 	do {
 		cout << "\n\tLinked List(nodes:" << size(head);
@@ -89,7 +89,7 @@ int main() {
 			begin = clock();
 			head = reverse_using_stack(head);
 			show_timeit(begin);
-            break;
+			break;
 
 		case 'r':  // reverses the list in-place.
 			if (empty(head)) break;
@@ -166,6 +166,7 @@ int main() {
 				head = two_heads.second;	// sets the second half as head
 				show(two_heads.first, show_all, show_n);
 				cout << endl;
+
 				clear(two_heads.first); // discard
 			}
 			break;

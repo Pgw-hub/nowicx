@@ -17,7 +17,7 @@ double evaluate_numeric(string tokens);
 bool is_numeric(string tokens);
 
 int main() {
-	setvbuf(stdout, nullptr, _IONBF, 0); // prevents the output from buffered on console. // 버퍼관리
+	setvbuf(stdout, nullptr, _IONBF, 0); // prevents the output from buffered on console.
 	string expr;
 	while (true) {
 		cout << "\nEnter a postfix expression w/ or w/o spaces."  << endl;
@@ -26,8 +26,8 @@ int main() {
 		if (expr[0] == 'q') break;
 
 		cout << "postfix expr: " << expr << endl;
-		cout << "  infix expr: " << evaluate(expr) << endl;//evaluate는 postfix를 infix로 바꿔주는 것.
-		if (is_numeric(expr))//만약 적은 expression에 변수가 숫자이면 evalate_numeric을 실행.
+		cout << "  infix expr: " << evaluate(expr) << endl;
+		if (is_numeric(expr))
 			cout << "   evaluated: " << evaluate_numeric(expr) << endl;
 	};
 

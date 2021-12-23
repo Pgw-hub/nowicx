@@ -177,8 +177,9 @@ int main() {
 			break;
 
 		case 't': // toggle the way of showing
+            
 			show_all ? show_all = false : show_all = true;
-			break;
+            break;
 
 		case 'n': // show_n - n nodes per line
 			N = GetInt("\tEnter number of nodes to show per line: ");
