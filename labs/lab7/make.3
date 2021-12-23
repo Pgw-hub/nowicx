@@ -1,0 +1,23 @@
+#아너코드: On my honor, I pledge that I have neither received nor provided improper assistance in the completion of this assignment.
+#Signed: [박건우]
+#Student Number: [21901023]
+
+CC = g++
+LIBDIR = ../../lib
+INCDIR = ../../include
+CCFLAGS = -Wall -std=c++11 -g
+LDFLAGS = -L$(LIBDIR) -lnowic -lsort
+
+SRC1 = sortDriver.cpp
+OBJ1 = $(SRC1:.cpp=.o)
+EXE1 = sortDriver
+
+$(EXE1): $(OBJ1)
+	$(CC) -o $@ $^  $(LDFLAGS)
+%.o: %.cpp
+	$(CC) $(CCFLAGS) -c $< -I$(INCDIR)
+
+.PHONY: all clean
+all: $(EXE1)
+clean:
+	rm -f $(OBJ1) $(EXE1)
