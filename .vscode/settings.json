@@ -69,5 +69,5 @@
         "unordered_map": "cpp",
         "vector": "cpp"
     },
-    "C_Cpp.errorSquiggles": "abled"
+    // "C_Cpp.errorSquiggles": "Enabled"
 }
