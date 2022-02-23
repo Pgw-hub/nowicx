@@ -36,30 +36,15 @@ using namespace std;
 #define DPRINT(func) ;
 #endif
 
-// bubblesort using a comparator function passed as a function pointer.
-void bubblesort(int *list, int n, bool (*comp)(int, int)) {
-  DPRINT(std::cout << "BUBBLE SORTING...\n");
-  for (int i = 0; i < n - 1; i++) {
-    bool swapped = false;
-    for (int j = 0; j < n - i - 1; j++) { // last i element is already in place
-      if (comp(list[j + 1], list[j])) {
-        swapped = true;
-        swap(list[j + 1], list[j]);
-      }
-    }
-    DPRINT(for(int x = 0; x < n; x++) cout << list[x] << " "; cout << endl);
-    if (!swapped) break;
-  }
-}
+
 
 #if 1
 // two comparator functions 
 // The value returned indicates whether the element passed as first argument
 // is considered to go before the second in the specific ordering.
 // more() and less() are equivalent to greater<int>() and less<int>() in STL. 
-bool more(int x, int y) { return x > y; }   // for descending order
-bool less(int x, int y) { return x < y; }   // for ascending order 
-
+bool more(int x, int y);   // for descending order
+bool less(int x, int y);   // for ascending order 
 void bubblesort(int *list, int n, bool (*comp)(int x, int y) = ::less);
 
 int main() {
@@ -84,3 +69,21 @@ int main() {
   	return 0;
 }
 #endif
+
+bool more(int x, int y) { return x > y; }   // for descending order
+bool less(int x, int y) { return x < y; }   // for ascending order 
+// bubblesort using a comparator function passed as a function pointer.
+void bubblesort(int *list, int n, bool (*comp)(int, int)) {
+  DPRINT(std::cout << "BUBBLE SORTING...\n");
+  for (int i = 0; i < n - 1; i++) {
+    bool swapped = false;
+    for (int j = 0; j < n - i - 1; j++) { // last i element is already in place
+      if (comp(list[j + 1], list[j])) {
+        swapped = true;
+        swap(list[j + 1], list[j]);
+      }
+    }
+    DPRINT(for(int x = 0; x < n; x++) cout << list[x] << " "; cout << endl);
+    if (!swapped) break;
+  }
+}
