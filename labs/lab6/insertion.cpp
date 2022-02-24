@@ -32,7 +32,11 @@
 // > ar t libsort.a                          # show objects in libsort.a 
 
 #include <iostream>
+<<<<<<< HEAD
 
+=======
+#include "sort.h"
+>>>>>>> insertiontest
 using namespace std;
 
 #ifdef DEBUG
@@ -41,12 +45,7 @@ using namespace std;
 #define DPRINT(func) ;
 #endif
 
-
-
-bool more(int x, int y) { return x > y; }   // for descending order
-bool less(int x, int y) { return x < y; }   // for ascending order 
-
-void insertionsort(int *list, int n, bool (*comp)(int,int) = :: less) {
+void insertionsort(int *list, int n, bool(*comp)(int, int)) {
 	DPRINT(cout << "INSERTION SORTING...\n");
 	for (int i = 1; i < n; i++) {
 		int key = list[i];
@@ -78,8 +77,7 @@ int main() {
 	cout << endl << endl;
 
     // Uncomment the next line and modify the code above to make it work. 
-	// makefile을 이해하고, 헤더파일 추가하는 것 공부한 후 다시 시도.
-	insertionsort(list, N, more); 
+	insertionsort(list, N, more);
 	cout << "INSERTION SORTED using more fp: " << endl;
 	for (auto x: list) cout << x << "  "; 
 	cout << endl << endl;
