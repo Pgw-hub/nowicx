@@ -34,16 +34,19 @@ using namespace std;
 #define DPRINT(func) ;
 #endif
 
+bool more(int x, int y) { return x >= y; }   // for descending order
+bool less(int x, int y) { return x <= y; }   // for ascending order 
+
 // This function takes last element as pivot, places the pivot element at its
 // correct position in sorted array, and places all smaller (smaller than pivot)
 // to left of pivot and all greater elements to right of pivot */
-int partition(int list[], int lo, int hi) {
+int partition(int list[], int lo, int hi, bool(*comp)(int,int) = ::less) {
 	DPRINT(cout << "partition pivot:" << list[hi] << " ";);
 	int pivot = list[hi];	// pivot value
 	int i = (lo - 1);  		// Index of smaller element
 
 	for (int j = lo; j <= hi - 1; j++) {
-		if (list[j] <= pivot) { 			// if current element is <= pivot
+		if (comp(list[j],pivot)) { 			// if current element is <= pivot
 			i++;    						// increment index of smaller element
 			swap(list[j], list[i]);  		// swap current element with index
 		}
@@ -56,20 +59,20 @@ int partition(int list[], int lo, int hi) {
 // quicksort helper function for recursive operation
 // list[]: array to be sorted, lo: Starting index, h: Ending index
 // N is added only for debugging or DPRINT
-void quicksort(int *list, int lo, int hi, int n) {
+void quicksort(int *list, int lo, int hi, int n,bool(*comp)(int,int) = ::less) {
 	if (lo < hi) 	{
-		int pi = partition(list, lo, hi); // pi: pivot index	
+		int pi = partition(list, lo, hi, comp); // pi: pivot index	
 		DPRINT(cout << "\npivot(" << pi << ")=" << list[pi] << "   LEFT\n";);
-		quicksort(list, lo, pi - 1, n);
+		quicksort(list, lo, pi - 1, n, comp);
 
 		DPRINT(cout << "\npivot(" << pi << ")=" << list[pi] << "   RIGHT\n";);
-		quicksort(list, pi + 1, hi, n);
+		quicksort(list, pi + 1, hi, n, comp); 
 	}
 }
 
-void quicksort(int *a, int n) {
+void quicksort(int *a, int n,bool(*comp)(int,int) = ::less) {
 	DPRINT(cout << "QUICK SORTING...\n");
-	quicksort(a, 0, n - 1, n);  // the last argument n is added only for DPRINT()
+	quicksort(a, 0, n - 1, n, comp);  // the last argument n is added only for DPRINT()
 }
 
 #if 1
@@ -88,7 +91,7 @@ int main() {
 	cout << endl << endl;
 
     // Uncomment the next line and modify the code above to make it work. 
-	// quicksort(list, N, more);
+	quicksort(list, N, more);
 	cout << "QUICK SORTED using more fp: " << endl;
 	for (auto x: list) cout << x << "  "; 
 	cout << endl << endl;
