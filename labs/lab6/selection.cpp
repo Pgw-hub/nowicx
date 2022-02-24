@@ -38,12 +38,15 @@ using namespace std;
 #define DPRINT(func) ;
 #endif
 
-void selectionsort(int *list, int n) {
+bool more(int x, int y) { return x > y; }   // for descending order
+bool less(int x, int y) { return x < y; }   // for ascending order 
+
+void selectionsort(int *list, int n, bool(*comp)(int,int) = ::less) {
 	DPRINT(cout << "selectionsort...\n");
 	for (int i = 0; i < n - 1; i++) {
 		int min = i;
 		for (int j = i + 1; j < n; j++) {
-			if (list[j] < list[min]) 
+			if (comp(list[j],list[min])) 
 				min = j;
 		}
 		swap(list[i], list[min]);
@@ -56,8 +59,7 @@ void selectionsort(int *list, int n) {
 // The value returned indicates whether the element passed as first argument
 // is considered to go before the second in the specific ordering.
 // more() and less() are equivalent to greater<int>() and less<int>() in STL. 
-bool more(int x, int y) { return x > y; }   // for descending order
-bool less(int x, int y) { return x < y; }   // for ascending order 
+
 
 int main() {
 	int list[] = { 3, 4, 1, 7, 9, 6, 5, 2, 8, 0 };
@@ -73,7 +75,7 @@ int main() {
 	cout << endl;
 
     // Uncomment the next line and modify the code above to make it work. 
-    // selectionsort(list, N, more);   
+    selectionsort(list, N, more);   
 	cout << "SELECTION SORTED using more fp: " << endl;
 	for (auto x: list) cout << x << "  "; 
 	cout << endl  << endl;
