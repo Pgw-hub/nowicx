@@ -32,6 +32,7 @@
 // > ar t libsort.a                          # show objects in libsort.a 
 
 #include <iostream>
+
 using namespace std;
 
 #ifdef DEBUG
@@ -41,6 +42,22 @@ using namespace std;
 #endif
 
 void insertionsort(int *list, int n) {
+	DPRINT(cout << "INSERTION SORTING...\n");
+	for (int i = 1; i < n; i++) {
+		int key = list[i];
+		int j = i - 1;
+		// move elements of list[0..i-1], that are greater than key,
+		// to one position ahead of their current position
+		while (j >= 0 && key < list[j]) {
+			list[j + 1] = list[j];
+			j = j - 1;
+		}
+		list[j + 1] = key;
+		DPRINT(for(int x = 0; x < n; x++) cout << list[x] << " "; cout << endl);
+	}
+}
+
+void insertionsort(int *list, int n, bool (*comp)(int,int)) {
 	DPRINT(cout << "INSERTION SORTING...\n");
 	for (int i = 1; i < n; i++) {
 		int key = list[i];
@@ -72,10 +89,11 @@ int main() {
 	cout << endl << endl;
 
     // Uncomment the next line and modify the code above to make it work. 
-	// insertionsort(list, N, more);
-	cout << "INSERTION SORTED using more fp: " << endl;
-	for (auto x: list) cout << x << "  "; 
-	cout << endl << endl;
+	// makefile을 이해하고, 헤더파일 추가하는 것 공부한 후 다시 시도.
+	// insertionsort(list, N, more); 
+	// cout << "INSERTION SORTED using more fp: " << endl;
+	// for (auto x: list) cout << x << "  "; 
+	// cout << endl << endl;
 
 	cout << "Happy Coding~~";
 	return 0;
