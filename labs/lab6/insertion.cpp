@@ -32,6 +32,7 @@
 // > ar t libsort.a                          # show objects in libsort.a 
 
 #include <iostream>
+#include "sort.h"
 using namespace std;
 
 #ifdef DEBUG
@@ -40,7 +41,7 @@ using namespace std;
 #define DPRINT(func) ;
 #endif
 
-void insertionsort(int *list, int n) {
+void insertionsort(int *list, int n, bool(*comp)(int, int)) {
 	DPRINT(cout << "INSERTION SORTING...\n");
 	for (int i = 1; i < n; i++) {
 		int key = list[i];
@@ -72,7 +73,7 @@ int main() {
 	cout << endl << endl;
 
     // Uncomment the next line and modify the code above to make it work. 
-	// insertionsort(list, N, more);
+	insertionsort(list, N, more);
 	cout << "INSERTION SORTED using more fp: " << endl;
 	for (auto x: list) cout << x << "  "; 
 	cout << endl << endl;
