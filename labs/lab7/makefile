@@ -2,13 +2,19 @@
 #Signed: [박건우]
 #Student Number: [21901023]
 
-qsort: quick.o comparator.o printlist.o
-	g++ quick.o comparator.o printlist.o -o qsort
-quick.o: quick.cpp
-	g++ -c quick.cpp -I../../include
+sortDriver : sortDriver.o comparator.o printlist.o bubble.o quick.o
+	g++ sortDriver.o comparator.o printlist.o bubble.o quick.o \
+		-I../../include -L../../lib -lnowic_mac -o sortDriver
+
+sortDriver.o : sortDriver.cpp
+	g++ -c -std=c++11 -Wall sortDriver.cpp -I../../include
 comparator.o: comparator.cpp
-	g++ -c comparator.cpp
+	g++ -c -std=c++11 -Wall comparator.cpp
 printlist.o: printlist.cpp
-	g++ -c printlist.cpp
+	g++ -c -std=c++11 -Wall printlist.cpp
+bubble.o : bubble.cpp
+	g++ -c -std=c++11 -Wall bubble.cpp -I../../include
+quick.o: quick.cpp
+	g++ -c -std=c++11 -Wall quick.cpp -I../../include
 clean:
-	rm -f *.o qsort.exe qsort
+	rm -f *.o sortDriver.exe sortDriver
