@@ -2,19 +2,22 @@
 #Signed: [박건우]
 #Student Number: [21901023]
 
-sortDriver : sortDriver.o comparator.o printlist.o bubble.o quick.o
-	g++ sortDriver.o comparator.o printlist.o bubble.o quick.o \
-		-I../../include -L../../lib -lnowic_mac -o sortDriver
+CC = g++
+LIBDIR = ../../lib
+INCDIR = ../../include
+CCFLAGS = -Wall -std=c++11
+LDFLAGS = -L$(LIBDIR) -lnowic_mac
 
-sortDriver.o : sortDriver.cpp
-	g++ -c -std=c++11 -Wall sortDriver.cpp -I../../include
-comparator.o: comparator.cpp
-	g++ -c -std=c++11 -Wall comparator.cpp
-printlist.o: printlist.cpp
-	g++ -c -std=c++11 -Wall printlist.cpp
-bubble.o : bubble.cpp
-	g++ -c -std=c++11 -Wall bubble.cpp -I../../include
-quick.o: quick.cpp
-	g++ -c -std=c++11 -Wall quick.cpp -I../../include
+SRCS = sortDriver.cpp comparator.cpp printlist.cpp bubble.cpp quick.cpp
+OBJS = $(SRCS:.cpp=.o)
+EXE1 = sortDriver
+
+$(EXE1) : $(OBJS)
+	$(CC) -o $@ $^ $(LDFLAGS)
+%.o : %.cpp
+	$(CC) -c $(CCFLAGS) -I$(INCDIR) $<
+
+.PHONY: all clean
+all : $(EXE1)
 clean:
 	rm -f *.o sortDriver.exe sortDriver
