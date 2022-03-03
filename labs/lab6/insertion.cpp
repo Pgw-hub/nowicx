@@ -32,11 +32,7 @@
 // > ar t libsort.a                          # show objects in libsort.a 
 
 #include <iostream>
-<<<<<<< HEAD
-
-=======
 #include "sort.h"
->>>>>>> insertiontest
 using namespace std;
 
 #ifdef DEBUG

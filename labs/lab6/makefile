@@ -12,9 +12,9 @@ INCDIR = ../../include
 CCFLAGS = -std=c++11 -Wall -g 
 #CCFLAGS += -DDEBUG        # uncomment for debugging
 ifeq ($(OS),Windows_NT)
-	LDFLAGS = -L$(LIBDIR) -lnowic
+	LDFLAGS = -L$(LIBDIR) -lnowic_mac -lsort_mac
 else
-	LDFLAGS = -L$(LIBDIR) -lnowic_mac
+	LDFLAGS = -L$(LIBDIR) -lnowic_mac -lsort_mac
 endif
 
 SRC1 = bubble.cpp
